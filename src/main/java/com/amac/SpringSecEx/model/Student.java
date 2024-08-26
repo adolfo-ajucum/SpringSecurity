@@ -1,4 +1,4 @@
-package com.amac.SpringSecEx;
+package com.amac.SpringSecEx.model;
 
 public class Student {
 

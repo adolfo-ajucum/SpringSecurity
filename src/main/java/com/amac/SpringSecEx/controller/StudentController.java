@@ -1,5 +1,6 @@
-package com.amac.SpringSecEx;
+package com.amac.SpringSecEx.controller;
 
+import com.amac.SpringSecEx.model.Student;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
