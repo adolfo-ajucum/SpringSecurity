@@ -35,13 +35,15 @@ public class SecurityConfig {
         .build();
     }
 
-   @Bean
-public AuthenticationProvider authenticationProvider(){
-    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-    provider.setUserDetailsService(userDetailsService); // Correctly set UserDetailsService
-    provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance()); // Correctly set PasswordEncoder
-    return provider;
-}
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+        provider.setUserDetailsService(userDetailsService);
+
+
+        return provider;
+    }
 
 //    @Bean
 //    public UserDetailsService userDetailsService() {
