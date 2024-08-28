@@ -25,15 +25,33 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-       return http
-               .csrf(customizer -> customizer.disable())
-               .authorizeHttpRequests(request -> request.anyRequest().authenticated())
-               .formLogin(Customizer.withDefaults())
-               .httpBasic(Customizer.withDefaults())
-               .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        return http.csrf(customizer -> customizer.disable()).
+                authorizeHttpRequests(request -> request.anyRequest().authenticated()).
+                httpBasic(Customizer.withDefaults()).
+                sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
 
-        .build();
+
     }
+
+
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//
+//        UserDetails user1 = User
+//                .withDefaultPasswordEncoder()
+//                .username("kiran")
+//                .password("k@123")
+//                .roles("USER")
+//                .build();
+//
+//        UserDetails user2 = User
+//                .withDefaultPasswordEncoder()
+//                .username("harsh")
+//                .password("h@123")
+//                .roles("ADMIN")
+//                .build();
+//        return new InMemoryUserDetailsManager(user1, user2);
+//    }
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -44,23 +62,5 @@ public class SecurityConfig {
 
         return provider;
     }
-
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//
-//        UserDetails user = User.withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("password")
-//                .roles("USER")
-//                .build();
-//
-//        UserDetails user2 = User.withDefaultPasswordEncoder()
-//                .username("admin")
-//                .password("password")
-//                .roles("ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(user, user2);
-//    }
 
 }
